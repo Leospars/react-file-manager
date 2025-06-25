@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import FileManager from "./FileManager/FileManager";
 import { createFolderAPI } from "./api/createFolderAPI";
-import { renameAPI } from "./api/renameAPI";
 import { deleteAPI } from "./api/deleteAPI";
+import { downloadFile } from "./api/downloadFileAPI";
 import { copyItemAPI, moveItemAPI } from "./api/fileTransferAPI";
 import { getAllFilesAPI } from "./api/getAllFilesAPI";
-import { downloadFile } from "./api/downloadFileAPI";
+import { renameAPI } from "./api/renameAPI";
 import "./App.scss";
+import FileManager from "./FileManager/FileManager";
 
 function App() {
   const fileUploadConfig = {
@@ -153,7 +153,7 @@ function App() {
           layout="grid"
           enableFilePreview
           maxFileSize={10485760}
-          filePreviewPath={import.meta.env.VITE_API_FILES_BASE_URL}
+          filePreviewPath={import.meta.env.EXPO_PUBLIC_VITE_API_FILES_BASE_URL}
           acceptedFileTypes=".txt, .png, .jpg, .jpeg, .pdf, .doc, .docx, .exe"
           height="100%"
           width="100%"
