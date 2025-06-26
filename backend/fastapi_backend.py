@@ -22,9 +22,8 @@ app.add_middleware(
 )
 
 # Base upload directory
-BASE_DIR = os.path.curdir
-if not os.path.exists(BASE_DIR):
-    os.makedirs(BASE_DIR)
+BASE_DIR = Path(".").parent.resolve()
+BASE_DIR.mkdir(parents=True, exist_ok=True)
 
 # Pydantic Model for folder creation
 class CreateFolderRequest(BaseModel):
@@ -39,16 +38,17 @@ def create_folder(request: CreateFolderRequest):
     """
     # Resolve folder path
     parent_path = request.parentId or ""
-    folder_path = os.path.join(BASE_DIR, parent_path, request.name)
-
-    # Check if folder already exists
-    if os.path.exists(folder_path):
+    folder_path = (BASE_DIR / Path(parent_path) / request.name).resolve()
+    # Path traversal protection
+    if BASE_DIR not in folder_path.parents and folder_path != BASE_DIR:
+        raise HTTPException(status_code=400, detail="Invalid folder path")
+    if folder_path.exists():
         raise HTTPException(status_code=400, detail="Folder already exists")
 
     # Create folder
     try:
-        os.makedirs(folder_path, exist_ok=True)
-        return {"message": f"Folder '{request.name}' created successfully", "path": folder_path}
+        folder_path.mkdir(parents=True, exist_ok=True)
+        return {"message": f"Folder '{request.name}' created successfully", "path": str(folder_path.relative_to(BASE_DIR))}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -71,25 +71,20 @@ def list_items(base_path: str) -> List[dict]:
     items = []
     for root, dirs, files in os.walk(base_path):
         for name in dirs + files:
-            # Full path and relative path
-            full_path = os.path.join(root, name)
-            relative_path = os.path.relpath(full_path, BASE_DIR)
-
-            # Add '/' at the start of the path
-            formatted_path = f"/{relative_path.replace(os.path.sep, '/')}"  
-
-            # Generate file preview URL if it's a file
-            preview_url = None
-            if os.path.isfile(full_path):  # Skip unsupported files
-                preview_url = "/preview"+formatted_path
-
-            # Append file/folder details to the list
+            full_path = Path(root) / name
+            try:
+                rel_path = full_path.relative_to(BASE_DIR)
+            except ValueError:
+                raise HTTPException(400, "Item is outside base bath")
+                #continue  # Skip items outside BASE_DIR
+            formatted_path = f"/{rel_path.as_posix()}"
+            preview_url = f"/preview{formatted_path}" if full_path.is_file() else None
             items.append({
                 "name": name,
-                "isDirectory": os.path.isdir(full_path),
-                "path": formatted_path,  # Path starts with '/'
-                "size": os.path.getsize(full_path) if os.path.isfile(full_path) else None,
-                "filePreviewPath": preview_url  # Optional preview URL for supported files
+                "isDirectory": full_path.is_dir(),
+                "path": formatted_path,
+                "size": full_path.stat().st_size if full_path.is_file() else None,
+                "filePreviewPath": preview_url
             })
     return items
 
@@ -100,10 +95,10 @@ def preview_file(file_path: str):
     Provides file previews by serving the file from disk.
     - `file_path` is the relative path to the file within BASE_DIR.
     """
-    # Resolve the absolute file path
-    absolute_path = BASE_DIR / file_path
-
-    # Check if the file exists and is a file
+    absolute_path = (BASE_DIR / Path(file_path)).resolve()
+    # Path traversal protection
+    if BASE_DIR not in absolute_path.parents and absolute_path != BASE_DIR:
+        raise HTTPException(status_code=400, detail="Invalid file path")
     if not absolute_path.exists() or not absolute_path.is_file():
         raise HTTPException(status_code=404, detail="File not found")
 
@@ -113,13 +108,15 @@ def preview_file(file_path: str):
         raise HTTPException(status_code=400, detail="File type not supported for preview")
 
     # Serve the file
-    return FileResponse(absolute_path, filename=absolute_path.name)
+    return FileResponse(str(absolute_path), filename=absolute_path.name)
 
 # 📂 Get All Files/Folders
 @app.get("/")
 def get_items(path: str = ""):
-    directory = os.path.join(BASE_DIR, path)
-    if not os.path.exists(directory):
+    directory = (BASE_DIR / Path(path)).resolve()
+    if BASE_DIR not in directory.parents and directory != BASE_DIR:
+        raise HTTPException(status_code=400, detail="Invalid path")
+    if not directory.exists():
         raise HTTPException(status_code=404, detail="Path not found")
     return list_items(directory)
 

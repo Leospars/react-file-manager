@@ -1,14 +1,14 @@
-import { AiOutlineClose } from "react-icons/ai";
-import Progress from "../../../components/Progress/Progress";
-import { getFileExtension } from "../../../utils/getFileExtension";
-import { useFileIcons } from "../../../hooks/useFileIcons";
-import { FaRegFile } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
-import { getDataSize } from "../../../utils/getDataSize";
+import { AiOutlineClose } from "react-icons/ai";
 import { FaRegCheckCircle } from "react-icons/fa";
+import { FaRegFile } from "react-icons/fa6";
 import { IoMdRefresh } from "react-icons/io";
-import { useFiles } from "../../../contexts/FilesContext";
-import { useTranslation } from "../../../contexts/TranslationProvider";
+import Progress from "../../../../../../lib/components/Progress/Progress";
+import { useFiles } from "../../../../../../lib/contexts/FilesContext";
+import { useTranslation } from "../../../../../../lib/contexts/TranslationProvider";
+import { useFileIcons } from "../../../../../../lib/hooks/useFileIcons";
+import { getDataSize } from "../../../../../../lib/utils/getDataSize";
+import { getFileExtension } from "../../../../../../lib/utils/getFileExtension";
 
 const UploadItem = ({
   index,

@@ -1,13 +1,13 @@
 import React, { useMemo, useState } from "react";
-import { getFileExtension } from "../../../utils/getFileExtension";
-import Loader from "../../../components/Loader/Loader";
-import { useSelection } from "../../../contexts/SelectionContext";
-import Button from "../../../components/Button/Button";
-import { getDataSize } from "../../../utils/getDataSize";
-import { MdOutlineFileDownload } from "react-icons/md";
-import { useFileIcons } from "../../../hooks/useFileIcons";
 import { FaRegFileAlt } from "react-icons/fa";
-import { useTranslation } from "../../../contexts/TranslationProvider";
+import { MdOutlineFileDownload } from "react-icons/md";
+import Button from "../../../../../../lib/components/Button/Button";
+import Loader from "../../../../../../lib/components/Loader/Loader";
+import { useSelection } from "../../../../../../lib/contexts/SelectionContext";
+import { useTranslation } from "../../../../../../lib/contexts/TranslationProvider";
+import { useFileIcons } from "../../../../../../lib/hooks/useFileIcons";
+import { getDataSize } from "../../../../../../lib/utils/getDataSize";
+import { getFileExtension } from "../../../../../../lib/utils/getFileExtension";
 import "./PreviewFile.action.scss";
 
 const imageExtensions = ["jpg", "jpeg", "png"];

@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
-import Checkbox from "../../components/Checkbox/Checkbox";
-import { useSelection } from "../../contexts/SelectionContext";
-import { useFileNavigation } from "../../contexts/FileNavigationContext";
+import Checkbox from "../../../../../lib/components/Checkbox/Checkbox";
+import { useFileNavigation } from "../../../../../lib/contexts/FileNavigationContext";
+import { useSelection } from "../../../../../lib/contexts/SelectionContext";
 
 const FilesHeader = ({ unselectFiles }) => {
   const [showSelectAll, setShowSelectAll] = useState(false);

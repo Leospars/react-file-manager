@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
-import Button from "../../../components/Button/Button";
 import { IoWarningOutline } from "react-icons/io5";
-import { useDetectOutsideClick } from "../../../hooks/useDetectOutsideClick";
-import Modal from "../../../components/Modal/Modal";
-import { getFileExtension } from "../../../utils/getFileExtension";
-import NameInput from "../../../components/NameInput/NameInput";
-import ErrorTooltip from "../../../components/ErrorTooltip/ErrorTooltip";
-import { useFileNavigation } from "../../../contexts/FileNavigationContext";
-import { useLayout } from "../../../contexts/LayoutContext";
-import { validateApiCallback } from "../../../utils/validateApiCallback";
-import { useTranslation } from "../../../contexts/TranslationProvider";
+import Button from "../../../../../../lib/components/Button/Button";
+import ErrorTooltip from "../../../../../../lib/components/ErrorTooltip/ErrorTooltip";
+import Modal from "../../../../../../lib/components/Modal/Modal";
+import NameInput from "../../../../../../lib/components/NameInput/NameInput";
+import { useFileNavigation } from "../../../../../../lib/contexts/FileNavigationContext";
+import { useLayout } from "../../../../../../lib/contexts/LayoutContext";
+import { useTranslation } from "../../../../../../lib/contexts/TranslationProvider";
+import { useDetectOutsideClick } from "../../../../../../lib/hooks/useDetectOutsideClick";
+import { getFileExtension } from "../../../../../../lib/utils/getFileExtension";
+import { validateApiCallback } from "../../../../../../lib/utils/validateApiCallback";
 
 const maxNameLength = 220;
 

@@ -3,7 +3,7 @@ export const downloadFile = async (files) => {
 
   try {
     const fileQuery = files.map((file) => `files=${encodeURIComponent(file._id)}`).join("&");
-    const url = `${import.meta.env.VITE_API_BASE_URL}/download?${fileQuery}`;
+    const url = `${process.env.EXPO_PUBLIC_VITE_API_BASE_URL}/download?${fileQuery}`;
 
     const link = document.createElement("a");
     link.href = url;

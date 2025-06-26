@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { BiRename } from "react-icons/bi";
 import { BsCopy, BsFolderPlus, BsGridFill, BsScissors } from "react-icons/bs";
+import { FaListUl, FaRegPaste } from "react-icons/fa6";
 import { FiRefreshCw } from "react-icons/fi";
 import {
   MdClear,
@@ -7,15 +9,13 @@ import {
   MdOutlineFileDownload,
   MdOutlineFileUpload,
 } from "react-icons/md";
-import { BiRename } from "react-icons/bi";
-import { FaListUl, FaRegPaste } from "react-icons/fa6";
+import { useClipBoard } from "../../../../../lib/contexts/ClipboardContext";
+import { useFileNavigation } from "../../../../../lib/contexts/FileNavigationContext";
+import { useLayout } from "../../../../../lib/contexts/LayoutContext";
+import { useSelection } from "../../../../../lib/contexts/SelectionContext";
+import { useTranslation } from "../../../../../lib/contexts/TranslationProvider";
+import { validateApiCallback } from "../../../../../lib/utils/validateApiCallback";
 import LayoutToggler from "./LayoutToggler";
-import { useFileNavigation } from "../../contexts/FileNavigationContext";
-import { useSelection } from "../../contexts/SelectionContext";
-import { useClipBoard } from "../../contexts/ClipboardContext";
-import { useLayout } from "../../contexts/LayoutContext";
-import { validateApiCallback } from "../../utils/validateApiCallback";
-import { useTranslation } from "../../contexts/TranslationProvider";
 import "./Toolbar.scss";
 
 const Toolbar = ({ onLayoutChange, onRefresh, triggerAction, permissions }) => {

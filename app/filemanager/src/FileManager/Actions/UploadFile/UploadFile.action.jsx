@@ -1,14 +1,14 @@
 import { useRef, useState } from "react";
-import Button from "../../../components/Button/Button";
 import { AiOutlineCloudUpload } from "react-icons/ai";
-import UploadItem from "./UploadItem";
-import Loader from "../../../components/Loader/Loader";
-import { useFileNavigation } from "../../../contexts/FileNavigationContext";
-import { getFileExtension } from "../../../utils/getFileExtension";
-import { getDataSize } from "../../../utils/getDataSize";
-import { useFiles } from "../../../contexts/FilesContext";
-import { useTranslation } from "../../../contexts/TranslationProvider";
+import Button from "../../../../../../lib/components/Button/Button";
+import Loader from "../../../../../../lib/components/Loader/Loader";
+import { useFileNavigation } from "../../../../../../lib/contexts/FileNavigationContext";
+import { useFiles } from "../../../../../../lib/contexts/FilesContext";
+import { useTranslation } from "../../../../../../lib/contexts/TranslationProvider";
+import { getDataSize } from "../../../../../../lib/utils/getDataSize";
+import { getFileExtension } from "../../../../../../lib/utils/getFileExtension";
 import "./UploadFile.action.scss";
+import UploadItem from "./UploadItem";
 
 const UploadFileAction = ({
   fileUploadConfig,

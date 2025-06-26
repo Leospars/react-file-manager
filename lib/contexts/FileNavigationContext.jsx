@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { useFiles } from "./FilesContext";
 import sortFiles from "../utils/sortFiles";
+import { useFiles } from "./FilesContext";
 
 const FileNavigationContext = createContext();
 

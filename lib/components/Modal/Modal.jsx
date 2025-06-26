@@ -1,5 +1,5 @@
-import { MdClose } from "react-icons/md";
 import { useEffect, useRef } from "react";
+import { MdClose } from "react-icons/md";
 import { useTranslation } from "../../contexts/TranslationProvider";
 import "./Modal.scss";
 

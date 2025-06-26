@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Button from "../../../components/Button/Button";
-import { useSelection } from "../../../contexts/SelectionContext";
-import { useTranslation } from "../../../contexts/TranslationProvider";
+import Button from "../../../../../../lib/components/Button/Button";
+import { useSelection } from "../../../../../../lib/contexts/SelectionContext";
+import { useTranslation } from "../../../../../../lib/contexts/TranslationProvider";
 import "./Delete.action.scss";
 
 const DeleteAction = ({ triggerAction, onDelete }) => {

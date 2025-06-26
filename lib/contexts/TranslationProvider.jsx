@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import i18n, { initI18n } from "../i18n";
+import i18n, { initI18n } from "../../app/filemanager/src/i18n";
 
 const I18nContext = createContext(() => (key) => key);
 

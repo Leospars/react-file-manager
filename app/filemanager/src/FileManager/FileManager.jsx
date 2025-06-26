@@ -1,41 +1,41 @@
-import Loader from "../components/Loader/Loader";
-import Toolbar from "./Toolbar/Toolbar";
-import NavigationPane from "./NavigationPane/NavigationPane";
+import PropTypes from "prop-types";
+import { useMemo, useState } from "react";
+import Loader from "../../../../lib/components/Loader/Loader";
+import { ClipBoardProvider } from "../../../../lib/contexts/ClipboardContext";
+import { FileNavigationProvider } from "../../../../lib/contexts/FileNavigationContext";
+import { FilesProvider } from "../../../../lib/contexts/FilesContext";
+import { LayoutProvider } from "../../../../lib/contexts/LayoutContext";
+import { SelectionProvider } from "../../../../lib/contexts/SelectionContext";
+import { TranslationProvider } from "../../../../lib/contexts/TranslationProvider";
+import { useColumnResize } from "../../../../lib/hooks/useColumnResize";
+import { useTriggerAction } from "../../../../lib/hooks/useTriggerAction";
+import { defaultPermissions } from "../../../../lib/constants";
+import { dateStringValidator, urlValidator } from "../../../../lib/validators/propValidators";
+import Actions from "./Actions/Actions";
 import BreadCrumb from "./BreadCrumb/BreadCrumb";
 import FileList from "./FileList/FileList";
-import Actions from "./Actions/Actions";
-import { FilesProvider } from "../contexts/FilesContext";
-import { FileNavigationProvider } from "../contexts/FileNavigationContext";
-import { SelectionProvider } from "../contexts/SelectionContext";
-import { ClipBoardProvider } from "../contexts/ClipboardContext";
-import { LayoutProvider } from "../contexts/LayoutContext";
-import { useTriggerAction } from "../hooks/useTriggerAction";
-import { useColumnResize } from "../hooks/useColumnResize";
-import PropTypes from "prop-types";
-import { dateStringValidator, urlValidator } from "../validators/propValidators";
-import { TranslationProvider } from "../contexts/TranslationProvider";
-import { useMemo, useState } from "react";
-import { defaultPermissions } from "../constants";
 import "./FileManager.scss";
+import NavigationPane from "./NavigationPane/NavigationPane";
+import Toolbar from "./Toolbar/Toolbar";
 
 const FileManager = ({
   files,
   fileUploadConfig,
   isLoading,
   onCreateFolder,
-  onFileUploading = () => {},
-  onFileUploaded = () => {},
+  onFileUploading = () => { },
+  onFileUploaded = () => { },
   onCut,
   onCopy,
   onPaste,
   onRename,
   onDownload,
   onDelete = () => null,
-  onLayoutChange = () => {},
+  onLayoutChange = () => { },
   onRefresh,
-  onFileOpen = () => {},
+  onFileOpen = () => { },
   onSelect,
-  onError = () => {},
+  onError = () => { },
   layout = "grid",
   enableFilePreview = true,
   maxFileSize,

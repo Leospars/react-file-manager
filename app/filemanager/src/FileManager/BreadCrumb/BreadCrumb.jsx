@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
+import { useEffect, useRef, useState } from "react";
 import { MdHome, MdMoreHoriz, MdOutlineNavigateNext } from "react-icons/md";
-import { TbLayoutSidebarLeftExpand, TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
-import { useFileNavigation } from "../../contexts/FileNavigationContext";
-import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
-import { useTranslation } from "../../contexts/TranslationProvider";
+import { TbLayoutSidebarLeftCollapseFilled, TbLayoutSidebarLeftExpand } from "react-icons/tb";
+import { useFileNavigation } from "../../../../../lib/contexts/FileNavigationContext";
+import { useTranslation } from "../../../../../lib/contexts/TranslationProvider";
+import { useDetectOutsideClick } from "../../../../../lib/hooks/useDetectOutsideClick";
 import "./BreadCrumb.scss";
 
 const BreadCrumb = ({ collapsibleNav, isNavigationPaneOpen, setNavigationPaneOpen }) => {

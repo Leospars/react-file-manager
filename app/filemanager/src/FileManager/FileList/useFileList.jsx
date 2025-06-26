@@ -1,17 +1,17 @@
+import { useEffect, useState } from "react";
 import { BiRename, BiSelectMultiple } from "react-icons/bi";
 import { BsCopy, BsFolderPlus, BsGrid, BsScissors } from "react-icons/bs";
 import { FaListUl, FaRegFile, FaRegPaste } from "react-icons/fa6";
 import { FiRefreshCw } from "react-icons/fi";
 import { MdOutlineDelete, MdOutlineFileDownload, MdOutlineFileUpload } from "react-icons/md";
 import { PiFolderOpen } from "react-icons/pi";
-import { useClipBoard } from "../../contexts/ClipboardContext";
-import { useEffect, useState } from "react";
-import { useSelection } from "../../contexts/SelectionContext";
-import { useLayout } from "../../contexts/LayoutContext";
-import { useFileNavigation } from "../../contexts/FileNavigationContext";
-import { duplicateNameHandler } from "../../utils/duplicateNameHandler";
-import { validateApiCallback } from "../../utils/validateApiCallback";
-import { useTranslation } from "../../contexts/TranslationProvider";
+import { useClipBoard } from "../../../../../lib/contexts/ClipboardContext";
+import { useFileNavigation } from "../../../../../lib/contexts/FileNavigationContext";
+import { useLayout } from "../../../../../lib/contexts/LayoutContext";
+import { useSelection } from "../../../../../lib/contexts/SelectionContext";
+import { useTranslation } from "../../../../../lib/contexts/TranslationProvider";
+import { duplicateNameHandler } from "../../../../../lib/utils/duplicateNameHandler";
+import { validateApiCallback } from "../../../../../lib/utils/validateApiCallback";
 
 const useFileList = (onRefresh, enableFilePreview, triggerAction, permissions) => {
   const [selectedFileIndexes, setSelectedFileIndexes] = useState([]);

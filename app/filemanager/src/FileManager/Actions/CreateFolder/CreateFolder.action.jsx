@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useDetectOutsideClick } from "../../../hooks/useDetectOutsideClick";
-import { duplicateNameHandler } from "../../../utils/duplicateNameHandler";
-import NameInput from "../../../components/NameInput/NameInput";
-import ErrorTooltip from "../../../components/ErrorTooltip/ErrorTooltip";
-import { useFileNavigation } from "../../../contexts/FileNavigationContext";
-import { useLayout } from "../../../contexts/LayoutContext";
-import { validateApiCallback } from "../../../utils/validateApiCallback";
-import { useTranslation } from "../../../contexts/TranslationProvider";
+import ErrorTooltip from "../../../../../../lib/components/ErrorTooltip/ErrorTooltip";
+import NameInput from "../../../../../../lib/components/NameInput/NameInput";
+import { useFileNavigation } from "../../../../../../lib/contexts/FileNavigationContext";
+import { useLayout } from "../../../../../../lib/contexts/LayoutContext";
+import { useTranslation } from "../../../../../../lib/contexts/TranslationProvider";
+import { useDetectOutsideClick } from "../../../../../../lib/hooks/useDetectOutsideClick";
+import { duplicateNameHandler } from "../../../../../../lib/utils/duplicateNameHandler";
+import { validateApiCallback } from "../../../../../../lib/utils/validateApiCallback";
 
 const maxNameLength = 220;
 

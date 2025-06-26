@@ -1,13 +1,13 @@
 import { useRef } from "react";
+import ContextMenu from "../../../../../lib/components/ContextMenu/ContextMenu";
+import { useFileNavigation } from "../../../../../lib/contexts/FileNavigationContext";
+import { useLayout } from "../../../../../lib/contexts/LayoutContext";
+import { useTranslation } from "../../../../../lib/contexts/TranslationProvider";
+import { useDetectOutsideClick } from "../../../../../lib/hooks/useDetectOutsideClick";
 import FileItem from "./FileItem";
-import { useFileNavigation } from "../../contexts/FileNavigationContext";
-import { useLayout } from "../../contexts/LayoutContext";
-import ContextMenu from "../../components/ContextMenu/ContextMenu";
-import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
-import useFileList from "./useFileList";
-import FilesHeader from "./FilesHeader";
-import { useTranslation } from "../../contexts/TranslationProvider";
 import "./FileList.scss";
+import FilesHeader from "./FilesHeader";
+import useFileList from "./useFileList";
 
 const FileList = ({
   onCreateFolder,

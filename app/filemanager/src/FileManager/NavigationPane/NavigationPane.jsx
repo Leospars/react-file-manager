@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useFiles } from "../../../../../lib/contexts/FilesContext";
+import { useTranslation } from "../../../../../lib/contexts/TranslationProvider";
+import { getParentPath } from "../../../../../lib/utils/getParentPath";
 import FolderTree from "./FolderTree";
-import { getParentPath } from "../../utils/getParentPath";
-import { useFiles } from "../../contexts/FilesContext";
-import { useTranslation } from "../../contexts/TranslationProvider";
 import "./NavigationPane.scss";
 
 const NavigationPane = ({ onFileOpen }) => {

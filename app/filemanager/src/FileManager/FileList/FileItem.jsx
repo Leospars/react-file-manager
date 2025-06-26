@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { FaRegFile, FaRegFolderOpen } from "react-icons/fa6";
-import { useFileIcons } from "../../hooks/useFileIcons";
+import Checkbox from "../../../../../lib/components/Checkbox/Checkbox";
+import { useClipBoard } from "../../../../../lib/contexts/ClipboardContext";
+import { useFileNavigation } from "../../../../../lib/contexts/FileNavigationContext";
+import { useLayout } from "../../../../../lib/contexts/LayoutContext";
+import { useSelection } from "../../../../../lib/contexts/SelectionContext";
+import { useFileIcons } from "../../../../../lib/hooks/useFileIcons";
+import { formatDate } from "../../../../../lib/utils/formatDate";
+import { getDataSize } from "../../../../../lib/utils/getDataSize";
 import CreateFolderAction from "../Actions/CreateFolder/CreateFolder.action";
 import RenameAction from "../Actions/Rename/Rename.action";
-import { getDataSize } from "../../utils/getDataSize";
-import { formatDate } from "../../utils/formatDate";
-import { useFileNavigation } from "../../contexts/FileNavigationContext";
-import { useSelection } from "../../contexts/SelectionContext";
-import { useClipBoard } from "../../contexts/ClipboardContext";
-import { useLayout } from "../../contexts/LayoutContext";
-import Checkbox from "../../components/Checkbox/Checkbox";
 
 const dragIconSize = 50;
 
